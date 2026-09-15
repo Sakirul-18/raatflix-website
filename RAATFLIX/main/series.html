@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaatFlix | TV Series</title>
+    
+    <!-- Premium Typography: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- UI Icons: Google Material Symbols Rounded -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+    
+    <!-- Video Player Libraries (Artplayer + HLS Support + HLS Control Plugin) -->
+    <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/artplayer-plugin-hls-control@latest/dist/artplayer-plugin-hls-control.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Profile Dropdown Component Styles -->
+    <link rel="stylesheet" href="../Profile/profile.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">
+                <img src="https://raw.githubusercontent.com/Sakirul-18/raatflix-website/refs/heads/main/images/raatflix_logo.png" alt="RaatFlix" id="nav-logo">
+            </a>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="hamburger-btn">
+            <span></span><span></span><span></span>
+        </label>
+
+        <ul class="nav-links">
+           <li><a href="../main/index.html">Home</a></li>
+           <li><a href="../main/movies.html">Movies</a></li>
+           <li><a href="../main/series.html" class="active">TV Series</a></li>
+           <li><a href="../main/favorites.html">Favorites</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="search-container">
+                <span class="material-symbols-rounded search-icon">search</span>
+                <input type="text" id="global-search" placeholder="Search movies, series, ..." autocomplete="off">
+                <div id="search-results" class="search-dropdown hidden"></div>
+            </div>
+
+            <!-- Profile Dropdown Component -->
+            <div class="profile-dropdown-container">
+                <div class="profile-avatar-btn" id="profileTrigger">
+                    <img src="images/profiles/default.png" alt="Profile" class="profile-avatar" onerror="this.src='https://ui-avatars.com/api/?name=User&background=0D1B2A&color=fff'">
+                </div>
+
+                <div class="profile-dropdown-menu" id="profileMenu">
+                    <div class="dropdown-header">
+                        <img src="images/profiles/default.png" alt="User Avatar" class="dropdown-avatar" onerror="this.src='https://ui-avatars.com/api/?name=User&background=0D1B2A&color=fff'">
+                        <h4 class="dropdown-username">Sakirul</h4>
+                    </div>
+                    
+                    <div class="dropdown-divider"></div>
+                    
+                    <ul class="dropdown-links">
+                        <li>
+                            <a href="../account/account.html">
+                                <span class="material-symbols-rounded">manage_accounts</span>
+                                Account
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Support/help_center.html">
+                                <span class="material-symbols-rounded">help</span>
+                                Help Center
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="dropdown-footer">
+                        <button id="signOutBtn" class="sign-out-btn">
+                            <span class="material-symbols-rounded">logout</span>
+                            Sign Out of RaatFlix
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dynamic Hero Banner Section -->
+    <header id="hero-section" class="hero-container">
+        <div id="hero-content" class="hero-content"></div>
+        <div id="hero-indicators" class="hero-indicators"></div>
+    </header>
+
+    <!-- Main Content Area for TV Series -->
+    <main class="main-content" style="padding-top: 2rem;">
+        
+        <!-- Continue Watching Series -->
+        <section id="section-series-continue" class="media-section">
+            <h2 class="section-title">Continue Watching Series</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="series-continue-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+        <!-- Top 10 Shows Today -->
+        <section id="section-series-top10" class="media-section">
+            <h2 class="section-title">Top 10 Shows Today</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="series-top10-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+        <!-- All TV Series -->
+        <section id="section-all-series" class="media-section">
+            <h2 class="section-title">All TV Series</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="all-series-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+        <!-- Anime -->
+        <section id="section-anime" class="media-section">
+            <h2 class="section-title">Anime</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="anime-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+        <!-- K-Dramas -->
+        <section id="section-kdramas" class="media-section">
+            <h2 class="section-title">K-Dramas</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="kdramas-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+        <!-- Hollywood Series -->
+        <section id="section-hollywood" class="media-section">
+            <h2 class="section-title">Hollywood</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="hollywood-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+        <!-- Bollywood Series -->
+        <section id="section-bollywood" class="media-section">
+            <h2 class="section-title">Bollywood</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
+                <div id="bollywood-container" class="media-track"></div>
+                <button class="slider-btn next" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Details Modal -->
+    <div id="media-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="close-btn" aria-label="Close"><span class="material-symbols-rounded">close</span></button>
+            
+            <div id="modal-banner" class="modal-banner">
+                <div class="modal-banner-overlay"></div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-header-info">
+                    <h2 id="modal-title" class="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span id="modal-match" class="match-score"></span>
+                        <span id="modal-year" class="year"></span>
+                        <span id="modal-rating" class="age-rating"></span>
+                        <span id="modal-duration" class="duration"></span>
+                        <span class="hd-badge">4K HDR</span>
+                    </div>
+                    <div id="modal-genres" class="modal-genres"></div>
+                    
+                    <div class="modal-actions">
+                        <button id="modal-play-btn" class="btn primary-btn">
+                            <span class="material-symbols-rounded">play_arrow</span> Play
+                        </button>
+                        <button id="modal-add-btn" class="btn secondary-btn circle-btn" aria-label="Add to List">
+                            <span class="material-symbols-rounded">add</span>
+                        </button>
+                        <button id="modal-like-btn" class="btn secondary-btn circle-btn" aria-label="Like">
+                            <span class="material-symbols-rounded">thumb_up</span>
+                        </button>
+                    </div>
+                    
+                    <p id="modal-description" class="modal-description"></p>
+                </div>
+
+                <!-- TV Series Specific UI (Seasons & Episodes Grid) -->
+                <div id="series-container" class="series-ui">
+                    <div class="season-header">
+                        <h3>Episodes</h3>
+                        <div class="season-selector">
+                            <select id="season-select" class="season-dropdown"></select>
+                        </div>
+                    </div>
+                    <div id="episodes-list" class="episodes-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player Overlay -->
+    <div id="video-player-overlay" class="player-overlay hidden">
+        <div id="video-container" class="video-container">
+            <div class="artplayer-app"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html">
+                    <img src="https://raw.githubusercontent.com/Sakirul-18/raatflix-website/refs/heads/main/images/raatflix_logo.png" alt="RaatFlix" id="nav-logo">
+                </a>
+                <p>Premium streaming for the true cinephile. Experience thousands of movies, exclusive TV shows, and high-definition Live TV seamlessly curated for your ultimate entertainment.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Platform</h4>
+                    <a href="../main/index.html">Home</a>
+                    <a href="../main/movies.html">Movies</a>
+                    <a href="../main/series.html">TV Series</a>
+                </div>
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <a href="#">FAQ</a>
+                    <a href="../Support/help_center.html">Help Center</a>
+                    <a href="#">Account Settings</a>
+                    <a href="#">Supported Devices</a>
+                </div>
+                <div class="link-group">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Preferences</a>
+                    <a href="#">Corporate Information</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#" aria-label="Language"><span class="material-symbols-rounded">language</span></a>
+                <a href="#" aria-label="Community"><span class="material-symbols-rounded">forum</span></a>
+                <a href="#" aria-label="Support"><span class="material-symbols-rounded">headset_mic</span></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> RaatFlix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Application Logic -->
+    <script src="player.js"></script>
+    <script src="responsive-nav.js" defer></script>
+    <script src="series.js" defer></script>
+    <script src="../Profile/profile.js" defer></script>
+</body>
+</html>

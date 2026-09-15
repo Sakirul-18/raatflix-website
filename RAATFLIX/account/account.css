@@ -1,0 +1,374 @@
+/* ==========================================================================
+   Help Center Aesthetic Theme - Account Settings
+   ========================================================================== */
+
+:root {
+    --bg-main: #0B0E14;
+    --bg-card: #131722;
+    --bg-input: #0A0D14;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.18);
+    --accent-red: #ff9d00d9;
+    --accent-red-glow: rgba(255, 157, 0, 0.2);
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --card-radius: 12px;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   Help Center Style Hero Header
+   ========================================================================== */
+
+.account-hero {
+    background: radial-gradient(circle at top center, rgba(255, 157, 0, 0.12) 0%, rgba(11, 14, 20, 0) 70%),
+                linear-gradient(180deg, #121622 0%, #0B0E14 100%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 6rem 1.5rem 3rem 1.5rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Main Container & Section Titles
+   ========================================================================== */
+
+.account-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 1.5rem;
+    min-height: 50vh;
+}
+
+.section-title-wrap {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Category Cards Grid (Matching Help Center)
+   ========================================================================== */
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 25px 20px;
+    text-align: left;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    border-color: var(--accent-red);
+    box-shadow: 0 8px 25px rgba(255, 157, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.cat-icon {
+    font-size: 1.8rem;
+    color: var(--accent-red);
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.category-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   Detail Panel (Revealed on Card Click)
+   ========================================================================== */
+
+.account-detail-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 2.5rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-red);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.account-section-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+}
+
+.section-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+/* ==========================================================================
+   Form Controls & Input Fields
+   ========================================================================== */
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 520px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.form-group label {
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.925rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 3px var(--accent-red-glow);
+}
+
+/* Custom Avatar Preview Card */
+.avatar-preview-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    max-width: 520px;
+}
+
+.avatar-preview-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-red);
+}
+
+.avatar-preview-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.avatar-preview-info p {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+}
+
+/* Profiles Grid */
+.profiles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 10px;
+    width: 220px;
+}
+
+.profile-card img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.add-profile-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--border-color);
+    border-radius: 10px;
+    padding: 1.25rem;
+    max-width: 520px;
+}
+
+.add-profile-box h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.inline-group {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.primary-btn {
+    background: var(--text-primary);
+    color: #0b0e14;
+    width: 100%;
+}
+
+.primary-btn:hover {
+    background: #e6e6e6;
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    background: var(--accent-red);
+    color: #ffffff;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.secondary-btn:hover {
+    background: #e08b00;
+}
+
+.limit-warning {
+    color: #ef4444;
+    font-size: 0.825rem;
+    margin-top: 0.65rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #10b981;
+    color: #ffffff;
+    padding: 0.85rem 1.35rem;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .account-hero {
+        padding: 5rem 1rem 2.5rem;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .account-detail-panel {
+        padding: 1.5rem;
+    }
+    .inline-group {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | RaatFlix</title>
+    
+    <!-- Premium Typography: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- UI Icons: Google Material Symbols Rounded -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" />
+    
+    <!-- Main Core CSS from main directory -->
+    <link rel="stylesheet" href="../main/style.css">
+    <!-- Help Center Custom Styles -->
+    <link rel="stylesheet" href="help-center.css">
+    <!-- Profile Dropdown Component Styles -->
+    <link rel="stylesheet" href="../Profile/profile.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="navbar scrolled">
+        <div class="nav-brand">
+            <a href="../main/index.html">
+                <img src="https://raw.githubusercontent.com/Sakirul-18/raatflix-website/refs/heads/main/images/raatflix_logo.png" alt="RaatFlix" id="nav-logo">
+            </a>
+            <span class="help-badge">Help Center</span>
+        </div>
+
+        <!-- Mobile hamburger toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <label for="nav-toggle" class="hamburger-btn">
+            <span></span><span></span><span></span>
+        </label>
+
+        <!-- Centered Navigation Links -->
+        <ul class="nav-links" style="margin: 0 auto;">
+            <li><a href="../main/index.html">Home</a></li>
+            <li><a href="../main/movies.html">Movies</a></li>
+            <li><a href="../main/series.html">TV Series</a></li>
+            <li><a href="../main/favorites.html">Favorites</a></li>
+            <li><a href="help_center.html" class="active">Help Center</a></li>
+        </ul>
+
+        <!-- Right Side: Profile Dropdown Menu -->
+        <div class="nav-actions">
+            <div class="profile-dropdown-container">
+                <div class="profile-avatar-btn" id="profileTrigger">
+                    <img src="../main/images/profiles/default.png" alt="Profile" class="profile-avatar" onerror="this.src='https://ui-avatars.com/api/?name=User&background=0D1B2A&color=fff'">
+                </div>
+
+                <!-- Animated Dropdown Card -->
+                <div class="profile-dropdown-menu" id="profileMenu">
+                    <div class="dropdown-header">
+                        <img src="../main/images/profiles/default.png" alt="User Avatar" class="dropdown-avatar" onerror="this.src='https://ui-avatars.com/api/?name=User&background=0D1B2A&color=fff'">
+                        <h4 class="dropdown-username">Sakirul</h4>
+                    </div>
+                    
+                    <div class="dropdown-divider"></div>
+                    
+                    <ul class="dropdown-links">
+                        <li>
+                            <a href="../account/account.html">
+                                <span class="material-symbols-rounded">manage_accounts</span>
+                                Account
+                            </a>
+                        </li>
+                        <li>
+                            <a href="help_center.html">
+                                <span class="material-symbols-rounded">help</span>
+                                Help Center
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="dropdown-divider"></div>
+
+                    <div class="dropdown-footer">
+                        <button id="signOutBtn" class="sign-out-btn">
+                            <span class="material-symbols-rounded">logout</span>
+                            Sign Out of RaatFlix
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Search Area -->
+    <section class="help-hero">
+        <div class="hero-content">
+            <h1>What can we help you with?</h1>
+            <p>Search for answers, report issues, or request your favorite content.</p>
+            <div class="help-search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="help-search-input" placeholder="Search for titles, playback errors, account options...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="help-container">
+
+        <!-- 8 Core Categories Grid -->
+        <section class="section-title-wrap">
+            <h2 class="section-title">Browse Support Categories</h2>
+        </section>
+
+        <div class="categories-grid" id="categories-grid">
+            
+            <div class="category-card" onclick="openSection('watching')">
+                <div class="cat-icon"><i class="fa-solid fa-film"></i></div>
+                <h3>Watching RaatFlix</h3>
+                <p>Playback guides, buffering, audio/subtitle sync, & video player fixes.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('account')">
+                <div class="cat-icon"><i class="fa-solid fa-user-gear"></i></div>
+                <h3>Account & Favorites</h3>
+                <p>Login issues, password reset, managing profiles & saved favorites list.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('search-browse')">
+                <div class="cat-icon"><i class="fa-solid fa-compass"></i></div>
+                <h3>Search & Browse</h3>
+                <p>Finding movies or series, navigating genres, & filtering categories.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('request')">
+                <div class="cat-icon"><i class="fa-solid fa-clapperboard"></i></div>
+                <h3>Request a Title</h3>
+                <p>Can't find a movie or show? Submit a request directly to our team.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('report-bug')">
+                <div class="cat-icon"><i class="fa-solid fa-bug"></i></div>
+                <h3>Report a Bug</h3>
+                <p>Report broken buttons, missing posters, playback errors & website bugs.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('feedback')">
+                <div class="cat-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <h3>Feedback & Suggestions</h3>
+                <p>Have an idea for RaatFlix? Share new features and UI improvements.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('contact')">
+                <div class="cat-icon"><i class="fa-solid fa-envelope"></i></div>
+                <h3>Contact Us</h3>
+                <p>Get direct support for general questions and unresolved issues.</p>
+            </div>
+
+            <div class="category-card" onclick="openSection('copyright')">
+                <div class="cat-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>Content & Copyright</h3>
+                <p>Report incorrect metadata, poster errors, or legal copyright concerns.</p>
+            </div>
+
+        </div>
+
+        <!-- Dynamic Content Panel -->
+        <section class="help-detail-panel hidden" id="help-detail-panel">
+            <button class="back-btn" onclick="closeSection()"><i class="fa-solid fa-arrow-left"></i> Back to all categories</button>
+            <div id="panel-content"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="../main/index.html">
+                    <img src="https://raw.githubusercontent.com/Sakirul-18/raatflix-website/refs/heads/main/images/raatflix_logo.png" alt="RaatFlix" id="nav-logo">
+                </a>
+                <p>Premium streaming for the true cinephile. Experience thousands of movies, exclusive TV shows, and high-definition Live TV seamlessly curated for your ultimate entertainment.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Platform</h4>
+                    <a href="../main/index.html">Home</a>
+                    <a href="../main/movies.html">Movies</a>
+                    <a href="../main/series.html">TV Series</a>
+                </div>
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <a href="#">FAQ</a>
+                    <a href="help_center.html">Help Center</a>
+                    <a href="#">Account Settings</a>
+                    <a href="#">Supported Devices</a>
+                </div>
+                <div class="link-group">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Preferences</a>
+                    <a href="#">Corporate Information</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#" aria-label="Language"><span class="material-symbols-rounded">language</span></a>
+                <a href="#" aria-label="Community"><span class="material-symbols-rounded">forum</span></a>
+                <a href="#" aria-label="Support"><span class="material-symbols-rounded">headset_mic</span></a>
+            </div>
+            <p>&copy; 2026 RaatFlix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../main/responsive-nav.js" defer></script>
+    <script src="../Profile/profile.js" defer></script>
+    <script src="help-center.js"></script>
+</body>
+</html>
